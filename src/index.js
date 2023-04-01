@@ -9,6 +9,8 @@ const BASE_URL = 'https://pixabay.com/api/';
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
+  captionPosition: 'bottom',
+  close: true,
 });
 
 const refs = {
@@ -117,52 +119,3 @@ window.scrollBy({
   top: cardHeight * 2,
   behavior: 'smooth',
 });
-// ====================================================================================================================================
-// import axios from 'axios';
-// import Notiflix from 'notiflix';
-// import articlesTmp from './index.html';
-// import NewsApiService from './news-service';
-// const form = document.querySelector('.search-form');
-// const input = form.querySelector('input');
-// const gallery = document.querySelector('.gallery');
-// const loadMoreBtn = document.querySelector('.load-more');
-// const newsApiService = new NewsApiService();
-// form.addEventListener('submit', onSearch);
-// loadMoreBtn.addEventListener('click', onLoadMore);
-
-// function onSearch(e) {
-//   e.preventDefault();
-//   newsApiService.query = e.currentTarget.elements.searchQuery.value;
-//   // newsApiService.resetPage();
-//   newsApiService.fetchArticles().then(hits => console.log(hits));
-// }
-// function onLoadMore() {
-//   newsApiService.fetchArticles();
-// }
-// function appendArticlesMarkUp() {
-//   gallery.innerHTML = '';
-//   data.hits.forEach(hit => {
-//     gallery.insertAdjacentHTML(
-//       'beforeend',
-//       `
-//             <div class="photo-card">
-//   <img src="${hit.webformatURL}" alt="${hit.tags}" loading="lazy" />
-//   <div class="info">
-//     <p class="info-item">
-//       <b>${hit.likes} Likes</b>
-//     </p>
-//     <p class="info-item">
-//       <b>${hit.views} Views</b>
-//     </p>
-//     <p class="info-item">
-//       <b>${hit.comments} Comments</b>
-//     </p>
-//     <p class="info-item">
-//       <b>${hit.downloads} Downloads</b>
-//     </p>
-//   </div>
-// </div>
-//           `
-//     );
-//   });
-// }

@@ -37,6 +37,7 @@
   margin-right: auto;
   margin-right: auto;
   margin-bottom: 30px;
+  background-color: #957ae0;
 }
 
 .gallery {
@@ -54,9 +55,8 @@
 }
 
 [type='button'] {
-  margin-left: 796px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  display: block;
+  margin: 20px auto;
   padding: 10px 30px;
   background-color: rgb(62, 70, 184);
   color: #fff;
