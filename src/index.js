@@ -11,6 +11,7 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
   captionPosition: 'bottom',
 });
+// lightbox.refresh();
 
 const refs = {
   formEl: document.querySelector('#search-form'),
@@ -66,7 +67,6 @@ async function fetchImage(url) {
 }
 
 function onLoadMore() {
-  refs.loadMoreBtn.style.display = 'none';
   lightbox.refresh();
   const url = `${BASE_URL}?key=${API_KEY}&q=${searchQuerry}&type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${currentPage}`;
   fetchImage(url);
