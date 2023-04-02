@@ -37,7 +37,7 @@ function onSearch(e) {
     Notiflix.Notify.failure('Enter something.');
   } else {
     fetchImage(url).then(cards => {
-      if (cards.total === 0) {
+      if (cards.hits.length === 0) {
         refs.loadMoreBtn.style.display = 'none';
         Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
