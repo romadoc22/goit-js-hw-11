@@ -10,7 +10,6 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
   captionPosition: 'bottom',
-  close: true,
 });
 
 const refs = {
@@ -18,6 +17,8 @@ const refs = {
   cardEl: document.querySelector('.gallery'),
   loadMoreBtn: document.querySelector('.load-more'),
 };
+refs.loadMoreBtn.style.display = 'none';
+console.log(refs.loadMoreBtn);
 
 let searchQuerry = '';
 let currentPage = 1;
@@ -32,12 +33,12 @@ function onSearch(e) {
   searchQuerry = e.currentTarget.elements.searchQuery.value.trim();
   const url = `${BASE_URL}?key=${API_KEY}&q=${searchQuerry}&type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${currentPage}`;
   if (searchQuerry === '') {
-    refs.loadMoreBtn.classList.add('is-hidden');
+    refs.loadMoreBtn.style.display = 'none';
     Notiflix.Notify.failure('Enter something.');
   } else {
     fetchImage(url).then(cards => {
       if (cards.total === 0) {
-        refs.loadMoreBtn.classList.add('is-hidden');
+        refs.loadMoreBtn.style.display = 'none';
         Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
         );
@@ -54,10 +55,10 @@ async function fetchImage(url) {
     const cards = response.data;
     refs.cardEl.insertAdjacentHTML('beforeend', renderCards(cards));
     currentPage += 1;
-    refs.loadMoreBtn.classList.remove('is-hidden');
+    refs.loadMoreBtn.style.display = 'block';
     return cards;
   } catch {
-    refs.loadMoreBtn.classList.add('is-hidden');
+    refs.loadMoreBtn.style.display = 'none';
     Notiflix.Notify.failure(
       "We're sorry, but you've reached the end of search results."
     );
@@ -65,6 +66,7 @@ async function fetchImage(url) {
 }
 
 function onLoadMore() {
+  refs.loadMoreBtn.style.display = 'none';
   lightbox.refresh();
   const url = `${BASE_URL}?key=${API_KEY}&q=${searchQuerry}&type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${currentPage}`;
   fetchImage(url);
@@ -101,6 +103,7 @@ function renderCards(cards) {
 </div>`;
       }
     )
+
     .join('');
 }
 
@@ -111,11 +114,11 @@ function clearContainer() {
 function resetPage() {
   currentPage = 1;
 }
-const { height: cardHeight } = document
-  .querySelector('.gallery')
-  .firstElementChild.getBoundingClientRect();
+// const { height: cardHeight } = document
+//   .querySelector('.gallery')
+//   .firstElementChild.getBoundingClientRect();
 
-window.scrollBy({
-  top: cardHeight * 2,
-  behavior: 'smooth',
-});
+// window.scrollBy({
+//   top: cardHeight * 2,
+//   behavior: 'smooth',
+// });

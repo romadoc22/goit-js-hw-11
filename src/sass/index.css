@@ -28,8 +28,14 @@
 .search-form {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   margin-bottom: 50px;
   margin-top: 50px;
+  align-items: center;
+  margin-right: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  background-color: #957ae0;
 }
 
 .gallery {
@@ -37,4 +43,23 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
+}
+
+[type=submit] {
+  margin-top: 30px;
+  padding: 10px 30px;
+  background-color: rgb(62, 70, 184);
+  color: #fff;
+}
+
+[type=button] {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 30px;
+  background-color: rgb(62, 70, 184);
+  color: #fff;
+}
+
+.load-more.is-hidden {
+  display: none;
 }/*# sourceMappingURL=index.css.map */
